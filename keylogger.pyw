@@ -97,7 +97,7 @@ def send_email():
     # encode into base64 
     encoders.encode_base64(part)
     part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
-    # attach the instance 'p' to instance 'msg' 
+    # attach the instance 'part' to instance 'msg' 
     msg.attach(part)
     # creates SMTP session
     server = smtplib.SMTP('smtp.gmail.com', 587)
