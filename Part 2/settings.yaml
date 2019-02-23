@@ -1,7 +1,7 @@
 client_config_backend: settings
 client_config:
-  client_id: 957818771041-7gmarsb5v6g3acgvj607aa8v1b3lvhj7.apps.googleusercontent.com
-  client_secret: SzD4SUe8fH57g96Xic5tRBmi
+  client_id: "Enter Client Id"
+  client_secret: "Enter Client Secret Code"
 
 save_credentials: True
 save_credentials_backend: file
